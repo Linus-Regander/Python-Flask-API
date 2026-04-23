@@ -51,5 +51,4 @@ class UserResource(Resource):
 
     @user_namespace.response(204, 'user deleted')
     def delete(self, user_id: str):
-        self.repository.delete_user(user_id)
-        return 'user deleted', 204
+        return self.repository.delete_user(user_id)

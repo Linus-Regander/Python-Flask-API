@@ -1,28 +1,21 @@
 class AppException(Exception):
-    status_code = 500
-    error_message = "Internal"
+    default_message = "Internal"
 
-    def __init__(self, message: str):
-        self.message = message
-        super().__init__(message)
-
+    def __init__(self, message: str | None = None):
+        super().__init__(message or self.default_message)
+        self.message = message or self.default_message
 
 class BadRequestException(AppException):
-    status_code = 400
-    error_message = "Bad request"
+    default_message = "Bad request"
 
 class NotFoundException(AppException):
-    status_code = 404
-    error_message = "Not found"
+    default_message = "Not found"
 
 class ConflictException(AppException):
-    status_code = 409
-    error_message = "Conflict"
+    default_message = "Conflict"
 
 class UnauthenticatedException(AppException):
-    status_code = 401
-    error_message = "Unauthenticated"
+    default_message = "Unauthenticated"
 
 class UnauthorizedException(AppException):
-    status_code = 403
-    error_message = "Forbidden"
+    default_message = "Forbidden"

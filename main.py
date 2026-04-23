@@ -1,16 +1,12 @@
 from flask import Flask
 from api import api
 from config import load_config
-from internal.model.exception.handler import ErrorHandler
 
 def setup_app():
     flask_app = Flask(__name__)
     ctx =  flask_app.app_context()
     ctx.push()
     api.init_app( flask_app)
-
-    error_handler = ErrorHandler(api=api)
-    error_handler.set_error_handler()
 
     return flask_app
 
