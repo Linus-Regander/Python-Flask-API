@@ -8,7 +8,7 @@ def setup_app():
     ctx.push()
     api.init_app( flask_app)
 
-    return  flask_app
+    return flask_app
 
 app = setup_app()
 
